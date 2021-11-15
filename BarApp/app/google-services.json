@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "958153719920",
+    "project_id": "barapp-24fbb",
+    "storage_bucket": "barapp-24fbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958153719920:android:66891be13f080882ccf4b5",
+        "android_client_info": {
+          "package_name": "com.example.barapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958153719920-m0nktkq72mm4mjb3ljn2iq79ap0rbls5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.barapp",
+            "certificate_hash": "709b6d8b383e5c05c748514062e46558adeb5e1d"
+          }
+        },
+        {
+          "client_id": "958153719920-713b16hbltqu9tk5ct70d3vsi01pfpqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhCWl9wATVITfASk8sgu4rTz_HSnl7f9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958153719920-713b16hbltqu9tk5ct70d3vsi01pfpqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
