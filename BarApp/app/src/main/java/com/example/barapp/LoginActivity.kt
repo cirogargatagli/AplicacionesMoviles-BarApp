@@ -1,15 +1,18 @@
 package com.example.barapp
 
+import Agenda
+import Bar
 import Usuario
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.preference.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -22,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var  dbReference: DatabaseReference
     private lateinit var  database:FirebaseDatabase
     private lateinit var  auth: FirebaseAuth
-    private lateinit var  usuario: Usuario
+    private lateinit var  btnLogin: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +37,14 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         dbReference = database.reference.child("Usuario")
+        btnLogin = findViewById(R.id.btnIngresar)
+
+        btnLogin.setOnClickListener{
+            loginUser()
+        }
         if(auth.currentUser != null){
             action()
         }
-    }
-
-    fun login(view: View){
-        loginUser()
     }
 
     fun forgotPassword(view: View){
@@ -63,9 +67,16 @@ class LoginActivity : AppCompatActivity() {
                         if(task.isSuccessful){
                             dbReference.child(auth.currentUser?.uid.toString())
                                 .get().addOnSuccessListener {
-                                    val title = R.string.nav_header_title
-                                    val rol = it.child("Rol").value
-                                    if(rol == "User"){
+                                    val hash = it.value as HashMap<*, *>
+                                    var user = Usuario(hash["Nombre"].toString(),
+                                        hash["Apellido"].toString(),
+                                        hash["Email"].toString(),
+                                        hash["Rol"].toString(),
+                                        "")
+                                    saveUserOnShared(user)
+
+
+                                    if(user.rol == "User"){
                                         action()
                                     }
                                 }
@@ -77,6 +88,17 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    fun saveUserOnShared ( user:Usuario ){
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = prefs.edit()
+        editor.putString("Nombre", user.nombre)
+        editor.putString("Apellido", user.apellido)
+        editor.putString("Email", user.email)
+        editor.putString("Rol", user.rol)
+        editor.putString("Imagen", user.img)
+        editor.apply()
     }
 
     private fun action(){

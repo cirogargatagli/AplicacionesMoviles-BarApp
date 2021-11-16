@@ -12,6 +12,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
+import androidx.preference.PreferenceManager
 import com.example.barapp.databinding.ActivityMasterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -37,6 +39,12 @@ class MasterActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
+        auth = FirebaseAuth.getInstance()
+
+        val header = navView.getHeaderView(0)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        header.findViewById<TextView>(R.id.txtNameNav).text = prefs.getString("Nombre", "Bienvenido") + " " + prefs.getString("Apellido", "")
+        header.findViewById<TextView>(R.id.txtEmailNav).text = auth.currentUser?.email.toString()
 
         val navController = findNavController(R.id.nav_host_fragment_content_master)
 
