@@ -1,14 +1,16 @@
-class Usuario(nombre: String, apellido: String, email: String,img: String, ) {
+class Usuario(nombre: String, apellido: String, email: String, rol: String, img: String, ) {
     var nombre: String = ""
     var apellido: String = ""
-    var img: String = ""
     var email: String = ""
+    var rol: String = ""
+    var img: String = ""
 
     init {
         this.nombre = nombre
         this.apellido = apellido
-        this.img =img
         this.email = email
+        this.rol = rol
+        this.img =img
     }
 
 }
