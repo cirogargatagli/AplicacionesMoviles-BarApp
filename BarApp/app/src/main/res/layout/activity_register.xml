@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Nombre"/>
+        android:hint="@string/name"/>
 
     <EditText
         android:id="@+id/txtLastName"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Apellido"
+        android:hint="@string/last_name"
         android:layout_marginTop="10dp"/>
 
     <EditText
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="Email"
+        android:hint="@string/email"
         android:layout_marginTop="10dp"/>
 
     <EditText
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:layout_marginTop="10dp"
         android:inputType="textPassword"/>
 

@@ -1,5 +1,6 @@
 package com.example.barapp
 
+import Usuario
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var  dbReference: DatabaseReference
     private lateinit var  database:FirebaseDatabase
     private lateinit var  auth: FirebaseAuth
+    private lateinit var  usuario: Usuario
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,7 @@ class LoginActivity : AppCompatActivity() {
                         if(task.isSuccessful){
                             dbReference.child(auth.currentUser?.uid.toString())
                                 .get().addOnSuccessListener {
+                                    val title = R.string.nav_header_title
                                     val rol = it.child("Rol").value
                                     if(rol == "User"){
                                         action()
@@ -68,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                                 }
                         }else{
                             progressBar.visibility = View.GONE
-                            Toast.makeText(this, "Error al autenticarse.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, R.string.error_login, Toast.LENGTH_LONG).show()
                         }
             }
 
@@ -77,7 +80,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun action(){
-        startActivity(Intent(this,MainActivity::class.java))
+        val intent = Intent(this,MasterActivity::class.java)
+        startActivity(intent)
         finish()
     }
 }
