@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BarApp">
         <activity
+            android:name=".MasterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_master"
+            android:theme="@style/Theme.BarApp.NoActionBar" />
+        <activity
             android:name=".ForgotPassActivity"
             android:exported="false" />
         <activity
