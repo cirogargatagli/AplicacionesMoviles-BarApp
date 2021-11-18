@@ -30,7 +30,7 @@ class ItemAdapter(
         val textView: TextView = view.findViewById(R.id.item_title)
         val imageView: ImageView = view.findViewById(R.id.item_image)
         val textAddress: TextView = view.findViewById(R.id.item_address)
-        val lineAdress : View = view.findViewById(R.id.line_address)
+        val lineAddress : View = view.findViewById(R.id.line_address)
     }
 
     /**
@@ -50,10 +50,13 @@ class ItemAdapter(
         val item = dataset[position]
         holder.textView.text = item.nombre
         holder.textAddress.text = item.direccion
-        holder.lineAdress.setOnClickListener{
+        holder.lineAddress.setOnClickListener{
             val intent = Intent(it.context, MapsActivity::class.java)
+            intent.putExtra("Id",item.id)
             intent.putExtra("Direccion", item.direccion)
             intent.putExtra("Nombre", item.nombre)
+            intent.putExtra("Latitud", item.lat)
+            intent.putExtra("Longitud", item.lng)
             startActivity(it.context, intent, Bundle())
         }
         Picasso.get()
