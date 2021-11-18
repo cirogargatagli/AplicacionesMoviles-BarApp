@@ -2,12 +2,17 @@ package com.example.barapp.adapter
 
 import Bar
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.barapp.MapsActivity
 import com.example.barapp.R
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
@@ -25,6 +30,7 @@ class ItemAdapter(
         val textView: TextView = view.findViewById(R.id.item_title)
         val imageView: ImageView = view.findViewById(R.id.item_image)
         val textAddress: TextView = view.findViewById(R.id.item_address)
+        val lineAdress : View = view.findViewById(R.id.line_address)
     }
 
     /**
@@ -44,6 +50,12 @@ class ItemAdapter(
         val item = dataset[position]
         holder.textView.text = item.nombre
         holder.textAddress.text = item.direccion
+        holder.lineAdress.setOnClickListener{
+            val intent = Intent(it.context, MapsActivity::class.java)
+            intent.putExtra("Direccion", item.direccion)
+            intent.putExtra("Nombre", item.nombre)
+            startActivity(it.context, intent, Bundle())
+        }
         Picasso.get()
             .load(item.img)
             .into(holder.imageView)
