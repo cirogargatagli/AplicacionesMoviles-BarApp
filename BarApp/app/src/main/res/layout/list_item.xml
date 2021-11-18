@@ -28,10 +28,17 @@
             android:textAppearance="?attr/textAppearanceHeadline5"
             tools:text="Nombre del bar" />
 
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="251dp"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -40,7 +47,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/item_address"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/item_address"
-                app:srcCompat="@android:drawable/ic_dialog_map" />
+                app:srcCompat="@drawable/ic_home_place" />
 
             <TextView
                 android:id="@+id/item_address"

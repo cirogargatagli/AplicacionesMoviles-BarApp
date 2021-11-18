@@ -46,13 +46,6 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        /*val btn : Button = binding.btnCerrarSesion
-        btn.setOnClickListener{
-            auth = FirebaseAuth.getInstance()
-            auth.signOut()
-            startActivity(Intent(context, LoginActivity::class.java))
-            onDestroyView()
-        }*/
         showBares()
         return root
     }

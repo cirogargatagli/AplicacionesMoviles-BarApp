@@ -1,8 +1,10 @@
 package com.example.barapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -38,9 +40,27 @@ class MasterActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         auth = FirebaseAuth.getInstance()
 
+        navView.menu.findItem(R.id.nav_logout).setOnMenuItemClickListener{
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage(R.string.confirm_logout)
+                .setCancelable(false)
+                .setPositiveButton(R.string.logout) { dialog, id ->
+                    auth.signOut()
+                    action()
+                }
+                .setNegativeButton(R.string.no) { dialog, id ->
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
+            true
+        }
+
         val header = navView.getHeaderView(0)
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        header.findViewById<TextView>(R.id.txtNameNav).text = prefs.getString("Nombre", "Bienvenido") + " " + prefs.getString("Apellido", "")
+        val headerName = header.findViewById<TextView>(R.id.txtNameNav)
+
+        headerName.text = prefs.getString("Nombre", "Bienvenido") + " " + prefs.getString("Apellido", "")
         header.findViewById<TextView>(R.id.txtEmailNav).text = auth.currentUser?.email.toString()
 
         val navController = findNavController(R.id.nav_host_fragment_content_master)
@@ -54,6 +74,11 @@ class MasterActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    private fun action(){
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
