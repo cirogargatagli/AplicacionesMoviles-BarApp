@@ -30,11 +30,6 @@
             android:textAppearance="?attr/textAppearanceHeadline5"
             tools:text="Nombre del bar" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="251dp"
-            android:layout_height="wrap_content" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
