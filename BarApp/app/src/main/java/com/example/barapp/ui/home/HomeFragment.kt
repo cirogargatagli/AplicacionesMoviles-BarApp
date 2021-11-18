@@ -67,11 +67,18 @@ class HomeFragment : Fragment() {
                         val barObj = it.getValue() as HashMap<*, *>
                         val agendaObj = barObj["Agenda"] as HashMap<*,*>
 
-                        var bar = Bar(barObj["Nombre"].toString(),
+                        val lat = barObj["Latitud"]
+                        val lng = barObj["Longitud"]
+
+                        var bar = Bar(it.key,
+                            barObj["Nombre"].toString(),
                             barObj["Direccion"].toString(),
                             barObj["Imagen"].toString(),
                             barObj["Valoracion"].toString().toDouble(),
-                            Agenda(agendaObj["Dias"].toString(), agendaObj["Inicio"].toString() , agendaObj["Fin"].toString()))
+                            Agenda(agendaObj["Dias"].toString(), agendaObj["Inicio"].toString() , agendaObj["Fin"].toString()),
+                            lat?.toString()?.toDouble(),
+                            lng?.toString()?.toDouble()
+                            )
                         //Agrego el bar a la lista
                         bares.add(bar)
                     }
