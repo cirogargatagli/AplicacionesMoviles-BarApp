@@ -24,4 +24,5 @@
     <string name="no">No</string>
 
     <string name="error_login">Error al autenticarse</string>
+    <string name="reservar">Reservar</string>
 </resources>
