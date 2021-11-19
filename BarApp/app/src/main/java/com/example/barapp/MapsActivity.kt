@@ -173,7 +173,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
 
     fun saveLatAndLngOnBar(id:String, lat : Double, lng : Double){
         database = FirebaseDatabase.getInstance()
-        dbReference = database.reference.child("Bar")
+        dbReference = database.reference.child("com.example.barapp.entity.Bar")
         dbReference.child(id).child("Latitud").setValue(lat)
         dbReference.child(id).child("Longitud").setValue(lng)
     }

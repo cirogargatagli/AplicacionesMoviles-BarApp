@@ -1,21 +1,10 @@
 package com.example.barapp
 
-import Agenda
-import Bar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
-import com.example.barapp.adapter.ItemAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import java.util.ArrayList
-import com.google.firebase.database.DatabaseError
-
-import com.google.firebase.database.DataSnapshot
-
-import com.google.firebase.database.ValueEventListener
 
 import com.google.firebase.database.FirebaseDatabase
 
@@ -33,13 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
-        dbReference = database.reference.child("Bar")
+        dbReference = database.reference.child("com.example.barapp.entity.Bar")
         //showBares()
     }
 
 //    private fun showBares() {
 //        //Inicializo la lista de Bares
-//        var bares = mutableListOf<Bar>()
+//        var bares = mutableListOf<com.example.barapp.entity.Bar>()
 //
 //        dbReference.addListenerForSingleValueEvent(
 //            object : ValueEventListener {
@@ -47,13 +36,13 @@ class MainActivity : AppCompatActivity() {
 //                    //Get map of users in datasnapshot
 //                    dataSnapshot.children.forEach {
 //                        val barObj = it.getValue() as HashMap<*, *>
-//                        val agendaObj = barObj["Agenda"] as HashMap<*,*>
+//                        val agendaObj = barObj["com.example.barapp.entity.Agenda"] as HashMap<*,*>
 //
-//                        var bar = Bar(barObj["Nombre"].toString(),
+//                        var bar = com.example.barapp.entity.Bar(barObj["Nombre"].toString(),
 //                            barObj["Direccion"].toString(),
 //                            barObj["Imagen"].toString(),
 //                            barObj["Valoracion"].toString().toDouble(),
-//                            Agenda(agendaObj["Dias"].toString(), agendaObj["Inicio"].toString() , agendaObj["Fin"].toString()))
+//                            com.example.barapp.entity.Agenda(agendaObj["Dias"].toString(), agendaObj["Inicio"].toString() , agendaObj["Fin"].toString()))
 //                        //Agrego el bar a la lista
 //                        bares.add(bar)
 //                    }

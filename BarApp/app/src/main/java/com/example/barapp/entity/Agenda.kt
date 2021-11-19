@@ -1,3 +1,5 @@
+package com.example.barapp.entity
+
 class Agenda(dias: String, inicio: String, fin: String) {
     var dias: String = ""
     var inicio: String = ""
