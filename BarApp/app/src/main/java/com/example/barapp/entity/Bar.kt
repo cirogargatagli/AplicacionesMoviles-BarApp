@@ -4,7 +4,7 @@ import android.net.Uri
 
 class Bar(
     id: String?, nombre: String, direccion: String, img: String,
-    capacidad: Long, valoracion: Double, facebook: Uri, instagram: Uri,
+    capacidad: Long, valoracion: Double, facebook: String, instagram: Uri,
     telefono: String, agenda: Agenda, lat : Double?, lng : Double? ) {
     var id: String? = ""
     var nombre: String = ""
@@ -12,7 +12,7 @@ class Bar(
     var img: String = ""
     var capacidad: Long = 0
     var valoracion: Double = 0.0
-    var facebook : Uri? = null
+    var facebook : String = ""
     var instagram : Uri? = null
     var telefono : String = ""
     var agenda: Agenda? = null

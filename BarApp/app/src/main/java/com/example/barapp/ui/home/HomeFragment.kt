@@ -70,7 +70,7 @@ class HomeFragment : Fragment() {
                             barObj["Imagen"].toString(),
                             barObj["Capacidad"] as Long,
                             barObj["Valoracion"].toString().toDouble(),
-                            Uri.parse(barObj["Facebook"].toString()),
+                            barObj["Facebook"].toString(),
                             Uri.parse(barObj["Instagram"].toString()),
                             barObj["Telefono"].toString(),
                             Agenda(agendaObj["Dias"].toString(), agendaObj["Inicio"].toString() , agendaObj["Fin"].toString()),
