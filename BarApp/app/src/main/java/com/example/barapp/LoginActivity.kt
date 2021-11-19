@@ -1,8 +1,6 @@
 package com.example.barapp
 
-import Agenda
-import Bar
-import Usuario
+import com.example.barapp.entity.Usuario
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -90,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun saveUserOnShared ( user:Usuario ){
+    fun saveUserOnShared ( user: Usuario){
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = prefs.edit()
         editor.putString("Nombre", user.nombre)

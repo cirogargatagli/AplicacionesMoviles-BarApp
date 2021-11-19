@@ -1,14 +1,13 @@
 package com.example.barapp.adapter
 
-import Bar
-import android.content.Context
+import com.example.barapp.entity.Bar
 import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +30,10 @@ class ItemAdapter(
         val imageView: ImageView = view.findViewById(R.id.item_image)
         val textAddress: TextView = view.findViewById(R.id.item_address)
         val lineAddress : View = view.findViewById(R.id.line_address)
+        val textPhone : TextView = view.findViewById(R.id.item_phone)
+        val textCapacity : TextView = view.findViewById(R.id.item_capacity)
+        val ratingBar : RatingBar = view.findViewById(R.id.ratingBar)
+        val textRating : TextView = view.findViewById(R.id.item_rating)
     }
 
     /**
@@ -59,6 +62,10 @@ class ItemAdapter(
             intent.putExtra("Longitud", item.lng)
             startActivity(it.context, intent, Bundle())
         }
+        holder.textPhone.text = item.telefono
+        holder.textCapacity.text = item.capacidad.toString()
+        holder.ratingBar.rating = item.valoracion.toFloat()
+        holder.textRating.text = item.valoracion.toString()
         Picasso.get()
             .load(item.img)
             .into(holder.imageView)

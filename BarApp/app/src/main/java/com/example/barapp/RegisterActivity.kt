@@ -38,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        dbReference = database.reference.child("Usuario")
+        dbReference = database.reference.child("com.example.barapp.entity.Usuario")
     }
 
     fun register(view:View){

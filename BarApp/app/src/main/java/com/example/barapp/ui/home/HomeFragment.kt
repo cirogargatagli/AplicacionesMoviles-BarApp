@@ -1,20 +1,14 @@
 package com.example.barapp.ui.home
 
-import Agenda
-import Bar
-import android.content.Intent
+import android.net.Uri
+import com.example.barapp.entity.Agenda
+import com.example.barapp.entity.Bar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import com.example.barapp.LoginActivity
-import com.example.barapp.R
 import com.example.barapp.adapter.ItemAdapter
 import com.example.barapp.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -74,7 +68,11 @@ class HomeFragment : Fragment() {
                             barObj["Nombre"].toString(),
                             barObj["Direccion"].toString(),
                             barObj["Imagen"].toString(),
+                            barObj["Capacidad"] as Long,
                             barObj["Valoracion"].toString().toDouble(),
+                            Uri.parse(barObj["Facebook"].toString()),
+                            Uri.parse(barObj["Instagram"].toString()),
+                            barObj["Telefono"].toString(),
                             Agenda(agendaObj["Dias"].toString(), agendaObj["Inicio"].toString() , agendaObj["Fin"].toString()),
                             lat?.toString()?.toDouble(),
                             lng?.toString()?.toDouble()
