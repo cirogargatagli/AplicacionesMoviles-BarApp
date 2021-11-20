@@ -8,11 +8,12 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPassActivity : AppCompatActivity() {
 
-    private lateinit var  txtEmail: EditText
+    private lateinit var  txtEmail: TextInputEditText
     private lateinit var auth:FirebaseAuth
     private lateinit var  progressBar: ProgressBar
 
@@ -21,7 +22,7 @@ class ForgotPassActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_pass)
 
-        txtEmail = findViewById(R.id.txtEmailForgot)
+        txtEmail = findViewById(R.id.txtEmailForgot_edit_text)
         auth = FirebaseAuth.getInstance()
         progressBar = findViewById(R.id.progressBarForgot)
     }

@@ -11,14 +11,15 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.preference.PreferenceManager
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var  txtMail: EditText
-    private lateinit var  txtPassword: EditText
+    private lateinit var  txtMail: TextInputEditText
+    private lateinit var  txtPassword: TextInputEditText
     private lateinit var  progressBar: ProgressBar
     private lateinit var  dbReference: DatabaseReference
     private lateinit var  database:FirebaseDatabase
@@ -29,8 +30,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        txtMail = findViewById(R.id.txtLoginEmail)
-        txtPassword = findViewById(R.id.txtLoginPass)
+        txtMail = findViewById(R.id.txtLoginEmail_edit_text)
+        txtPassword = findViewById(R.id.txtLoginPass_edit_text)
         progressBar = findViewById(R.id.progressBarLogin)
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()

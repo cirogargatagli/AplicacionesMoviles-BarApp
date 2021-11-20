@@ -49,7 +49,7 @@
                 android:id="@+id/item_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/ratingBar"
                 app:layout_constraintTop_toTopOf="parent"
@@ -80,7 +80,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/item_address"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/item_address"
-                app:srcCompat="@drawable/ic_home_place" />
+                app:srcCompat="@drawable/ic_home_place"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/item_address"
@@ -89,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 tools:text="Direccion" />
 
         </LinearLayout>
@@ -108,7 +109,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/item_address"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/item_address"
-                app:srcCompat="@drawable/ic_phone_24" />
+                app:srcCompat="@drawable/ic_phone_24"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/item_phone"
@@ -117,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 tools:text="Telefono" />
 
         </LinearLayout>
@@ -135,7 +137,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/item_address"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/item_address"
-                app:srcCompat="@drawable/ic_person_24" />
+                app:srcCompat="@drawable/ic_groups_24"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/item_capacity"
@@ -144,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 tools:text="Capacidad" />
 
         </LinearLayout>
@@ -171,12 +174,13 @@
                 android:id="@+id/iconFacebook"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/iconInstagram"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/facebook"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:contentDescription="@string/facebook" />
 
             <ImageView
                 android:id="@+id/iconInstagram"
@@ -186,7 +190,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/instagram"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:contentDescription="@string/instagram" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
