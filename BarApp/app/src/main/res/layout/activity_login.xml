@@ -8,23 +8,35 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLoginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
+        android:hint="Email">
 
-        android:hint="Email"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtLoginEmail_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
 
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLoginPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        android:hint="Password"/>
+        android:layout_marginTop="5dp"
+        android:hint="Password"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtLoginPass_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnIngresar"

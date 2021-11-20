@@ -14,47 +14,71 @@
         android:layout_height="wrap_content"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/name"/>
+        android:hint="@string/name">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtName_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/last_name"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="5dp"
+        android:hint="@string/last_name">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtLastName_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="5dp"
+        android:hint="@string/email">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtEmail_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_marginTop="5dp"
         android:hint="@string/password"
-        android:layout_marginTop="10dp"
-        android:inputType="textPassword"/>
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPassword_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:onClick="register"
         android:id="@+id/btnRegistrarse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
+        android:text="@string/registrarse"
         android:layout_marginTop="20dp"/>
 
     <ProgressBar

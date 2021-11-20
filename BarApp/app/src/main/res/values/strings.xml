@@ -28,5 +28,9 @@
     <string name="reservar">Reservar</string>
 
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="recuperar_contrasena">Recuperar contraseña</string>
+    <string name="facebook">facebook</string>
+    <string name="instagram">instagram</string>
 
 </resources>
