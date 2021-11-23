@@ -1,11 +1,11 @@
 package com.example.barapp.entity
 
-class Usuario(nombre: String, apellido: String, email: String, rol: String, img: String, ) {
-    var nombre: String = ""
-    var apellido: String = ""
-    var email: String = ""
-    var rol: String = ""
-    var img: String = ""
+class Usuario(nombre: String?, apellido: String?, email: String?, rol: String?, img: String?, ) {
+    var nombre: String? = ""
+    var apellido: String? = ""
+    var email: String? = ""
+    var rol: String? = ""
+    var img: String? = ""
 
     init {
         this.nombre = nombre

@@ -69,4 +69,26 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:text="Registrarse" />
+
+    <Button
+        android:id="@+id/btnGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/browser_actions_bg_grey"
+        android:drawableLeft="@mipmap/ic_google"
+        android:text="@string/google"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="14sp"
+        android:typeface="normal" />
+
+    <Button
+        android:id="@+id/btnFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/com_facebook_button_send_background_color"
+        android:drawableLeft="@mipmap/ic_facebook"
+        android:text="@string/face"
+        android:textColor="@color/white" />
 </LinearLayout>

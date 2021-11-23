@@ -1,5 +1,7 @@
 package com.example.barapp
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -15,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.example.barapp.databinding.ActivityMasterBinding
+import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -45,6 +48,10 @@ class MasterActivity : AppCompatActivity() {
             builder.setMessage(R.string.confirm_logout)
                 .setCancelable(false)
                 .setPositiveButton(R.string.logout) { dialog, id ->
+                    val prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE).edit()
+                    prefs.clear()
+                    prefs.apply()
+                    LoginManager.getInstance().logOut()
                     auth.signOut()
                     action()
                 }
@@ -57,7 +64,7 @@ class MasterActivity : AppCompatActivity() {
         }
 
         val header = navView.getHeaderView(0)
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE)
         val headerName = header.findViewById<TextView>(R.id.txtNameNav)
 
         headerName.text = prefs.getString("Nombre", "Bienvenido") + " " + prefs.getString("Apellido", "")
