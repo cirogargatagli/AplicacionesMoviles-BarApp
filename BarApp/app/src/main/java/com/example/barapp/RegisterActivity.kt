@@ -82,7 +82,7 @@ class RegisterActivity : AppCompatActivity() {
             ?.addOnCompleteListener(this){
                 task ->
                 if(task.isComplete){
-                    Toast.makeText(this, "Email enviado", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, R.string.send_mail, Toast.LENGTH_LONG).show()
                 }else{
                     Toast.makeText(this, "Error al enviar el email", Toast.LENGTH_SHORT).show()
                 }

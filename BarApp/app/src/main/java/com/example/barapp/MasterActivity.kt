@@ -67,7 +67,7 @@ class MasterActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE)
         val headerName = header.findViewById<TextView>(R.id.txtNameNav)
 
-        headerName.text = prefs.getString("Nombre", "Bienvenido") + " " + prefs.getString("Apellido", "")
+        headerName.text = prefs.getString("Nombre", R.string.welcome.toString()) + " " + prefs.getString("Apellido", "")
         header.findViewById<TextView>(R.id.txtEmailNav).text = auth.currentUser?.email.toString()
 
         val navController = findNavController(R.id.nav_host_fragment_content_master)

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BarApp</string>
+    <string name="title_activity_master">MasterActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Les paramètres</string>
+
+    <string name="prefs_file">com.example.barapp.PREFERENCE_FILE_KEY</string>
+
+    <string name="menu_home">Début</string>
+    <string name="menu_reservas">Mes réservations</string>
+    <string name="menu_slideshow">Otro fragment</string>
+
+    <string name="name">Nom</string>
+    <string name="last_name">Nom de famille</string>
+    <string name="email">Email</string>
+    <string name="password">Le mot de passe</string>
+    <string name="login">Entrer dans</string>
+    <string name="forgotpassword">Vous avez oublié votre mot de passe?</string>
+    <string name="password_sending">Mot de passe envoyé avec succès</string>
+
+    <string name="welcome">Bienvenue!</string>
+
+    <string name="send_mail">Email envoyé</string>
+<!--    <string name="error_send_mail">Erreur lors de l\'envoi de l'e-mail</string>-->
+
+
+
+    <string name="logout">Fermer la session</string>
+
+    <string name="confirm_logout">Êtes-vous sûr de vouloir vous déconnecter?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+
+    <string name="error_login">Échec de l\'authentification</string>
+
+    <string name="reservar">Reserver</string>
+
+    <string name="title_activity_maps">Emplacement du bar</string>
+    <string name="registrarse">Enregistrement</string>
+    <string name="recuperar_contrasena">Récupérer le mot de passe</string>
+    <string name="facebook">facebook</string>
+    <string name="instagram">instagram</string>
+
+    <string name="facebook_app_id">1727705217440063</string>
+    <string name="fb_login_protocol_scheme">fb1727705217440063</string>
+    <string name="google">Connectez-vous avec Google</string>
+    <string name="face">Connectez-vous avec Facebook</string>
+
+</resources>

@@ -36,12 +36,12 @@ class ForgotPassActivity : AppCompatActivity() {
                     task ->
 
                     if(task.isSuccessful){
-                        Toast.makeText(this, "Password enviada con éxito.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, R.string.password_sending, Toast.LENGTH_LONG).show()
                         startActivity(Intent(this, LoginActivity::class.java))
                         finish()
                     }else{
                         progressBar.visibility = View.GONE
-                        Toast.makeText(this, "Error al enviar mail.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, R.string.error_send_mail, Toast.LENGTH_LONG).show()
                     }
                 }
         }
