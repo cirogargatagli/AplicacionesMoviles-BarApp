@@ -1,11 +1,13 @@
 package com.example.barapp.entity
 
 import android.net.Uri
+import android.os.Parcel
+import android.os.Parcelable
 
 class Bar(
     id: String?, nombre: String, direccion: String, img: String,
-    capacidad: Long, valoracion: Double, facebook: String, instagram: Uri,
-    telefono: String, agenda: Agenda, lat : Double?, lng : Double? ) {
+    capacidad: Long, valoracion: Double, facebook: String, instagram: Uri?,
+    telefono: String, agenda: Agenda, lat: Double?, lng: Double? ){
     var id: String? = ""
     var nombre: String = ""
     var direccion: String = ""
@@ -18,6 +20,8 @@ class Bar(
     var agenda: Agenda? = null
     var lat: Double? = null
     var lng : Double? = null
+
+
 
     init {
         this.id = id
