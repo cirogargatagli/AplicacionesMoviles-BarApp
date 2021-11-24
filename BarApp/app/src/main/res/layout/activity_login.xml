@@ -12,7 +12,7 @@
         android:id="@+id/txtLoginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email">
+        android:hint="@string/email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtLoginEmail_edit_text"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:hint="Password"
+        android:hint="@string/password"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Ingresar" />
+        android:text="@string/login" />
 
     <ProgressBar
         android:id="@+id/progressBarLogin"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="¿Olvidaste tu contraseña?" />
+        android:text="@string/forgotpassword" />
 
     <TextView
         android:onClick="registerLogin"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Registrarse" />
+        android:text="@string/registrarse" />
 
     <Button
         android:id="@+id/btnGoogle"
