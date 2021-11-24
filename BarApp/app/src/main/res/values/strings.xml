@@ -39,7 +39,7 @@
 
     <string name="reservar">Reservar</string>
 
-    <string name="title_activity_maps">Ubicación del bar</string>
+    <string name="title_activity_maps">Ubicaciones</string>
     <string name="registrarse">Registrarse</string>
     <string name="recuperar_contrasena">Recuperar contraseña</string>
     <string name="facebook">facebook</string>
@@ -49,6 +49,7 @@
     <string name="fb_login_protocol_scheme">fb1727705217440063</string>
     <string name="google">Ingresar con Google</string>
     <string name="face">Ingresar con Facebook</string>
+    <string name="ver_en_mapa">Ver todos</string>
 
 
 </resources>

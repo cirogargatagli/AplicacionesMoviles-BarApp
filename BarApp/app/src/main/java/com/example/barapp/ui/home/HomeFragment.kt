@@ -1,18 +1,23 @@
 package com.example.barapp.ui.home
 
+import android.content.Intent
 import android.net.Uri
 import com.example.barapp.entity.Agenda
 import com.example.barapp.entity.Bar
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.barapp.MapsActivity
 import com.example.barapp.adapter.ItemAdapter
 import com.example.barapp.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.io.Serializable
 
 class HomeFragment : Fragment() {
 
@@ -40,6 +45,7 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         showBares()
         return root
     }
@@ -52,6 +58,8 @@ class HomeFragment : Fragment() {
     private fun showBares() {
         //Inicializo la lista de Bares
         var bares = mutableListOf<Bar>()
+
+        var listaBares = ArrayList<Bar>()
 
         dbReference.addListenerForSingleValueEvent(
             object : ValueEventListener {
@@ -79,6 +87,7 @@ class HomeFragment : Fragment() {
                             )
                         //Agrego el bar a la lista
                         bares.add(bar)
+                        listaBares.add(bar)
                     }
                     val recycler = binding.recyclerView
                     recycler.adapter = ItemAdapter(bares)
@@ -89,6 +98,11 @@ class HomeFragment : Fragment() {
                     //handle databaseError
                 }
             })
+        _binding!!.btnVerMapa.setOnClickListener{
+            val intent = Intent(it.context, MapsActivity::class.java)
+            intent.putExtra("allBars", true)
+            startActivity(intent)
+        }
 
     }
 }
