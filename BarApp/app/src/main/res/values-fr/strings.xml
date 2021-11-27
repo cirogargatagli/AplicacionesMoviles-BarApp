@@ -52,4 +52,15 @@
     <string name="face">Connectez-vous avec Facebook</string>
     <string name="ver_en_mapa">Voir tous</string>
 
+    <string name="upload">Télécharger...</string>
+    <string name="upload_perfil">Téléchargement d une photo de profil</string>
+    <string name="upload_succesfully">Image téléchargée avec succès</string>
+    <string name="weak_password">Mot de passe faible, choisissez-en un autre</string>
+    <string name="invalid_mail">Un email valide doit être saisi</string>
+    <string name="collision_mail">L email est déjà enregistré</string>
+    <string name="error_register">Une erreur s est produite lors de l enregistrement. Réessayer.</string>
+    <string name="complete_all">Tous les champs doivent être remplis.</string>
+    <string name="into_valid_mail">Un email valide doit être saisi.</string>
+    <string name="short_password">Le mot de passe doit comporter au moins 6 caractères.</string>
+
 </resources>

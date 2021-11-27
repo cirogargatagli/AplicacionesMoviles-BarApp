@@ -1,6 +1,7 @@
 package com.example.barapp
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Context
 import com.example.barapp.entity.Usuario
 import android.content.Intent
@@ -28,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.facebook.GraphRequest
 import java.lang.Exception
 
-
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var  txtMail: TextInputEditText
@@ -40,8 +40,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var  btnLogin: Button
     private lateinit var  btnFacebook: Button
     private lateinit var  btnGoogle: Button
-
     private lateinit var callbackManager: CallbackManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,8 +119,6 @@ class LoginActivity : AppCompatActivity() {
                                                         )
                                                         request.parameters = parameters
                                                         request.executeAsync()
-
-
                                                     }else{
                                                         val hash = it.value as HashMap<*, *>
                                                         val user = mapHashToUser(hash)
@@ -163,7 +161,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         callbackManager.onActivityResult(requestCode,resultCode,data)
-
     }
 
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -184,6 +181,7 @@ class LoginActivity : AppCompatActivity() {
                                                     val userDB = dbReference.child(auth.currentUser?.uid.toString())
                                                     userDB.child("Nombre").setValue(account.displayName)
                                                     userDB.child("Email").setValue(account.email)
+                                                    userDB.child("Imagen").setValue(account.photoUrl?.toString())
                                                     userDB.child("Rol").setValue("User")
 
                                                     val userAux =
@@ -193,6 +191,7 @@ class LoginActivity : AppCompatActivity() {
                                                             "User",
                                                             account.photoUrl?.toString())
                                                     saveUserOnSharedPreferences(userAux)
+
                                                     goHome()
                                                 }else{
                                                     val hash = it.value as HashMap<*, *>
@@ -245,7 +244,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun mapHashToUser(hash: HashMap<*, *>): Usuario {
+    fun mapHashToUser(hash: HashMap<*, *>): Usuario {
         var nombreAux: String? = null
         var apellidoAux: String? = null
         var emailAux: String? = null
@@ -267,7 +266,7 @@ class LoginActivity : AppCompatActivity() {
         )
     }
 
-    private fun saveUserOnSharedPreferences (user: Usuario){
+    fun saveUserOnSharedPreferences (user: Usuario){
         val prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE).edit()
         prefs.putString("Nombre", user.nombre)
         prefs.putString("Apellido", user.apellido)
