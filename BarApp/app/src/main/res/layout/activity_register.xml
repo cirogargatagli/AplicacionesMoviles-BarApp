@@ -8,16 +8,28 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="103dp"
+        android:layout_height="93dp"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="45dp">
+
+        <ImageView
+            android:id="@+id/img_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher_foreground"
+            tools:srcCompat="@mipmap/ic_launcher" />
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:hint="@string/name">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -51,4 +51,15 @@
     <string name="google">Sign in with Google</string>
     <string name="face">Sign in with Facebook</string>
     <string name="ver_en_mapa">See all</string>
+
+    <string name="upload">Upload...</string>
+    <string name="upload_perfil">Uploading profile picture</string>
+    <string name="upload_succesfully">Image uploaded successfully</string>
+    <string name="weak_password">Weak password, choose another</string>
+    <string name="invalid_mail">A valid email must be entered</string>
+    <string name="collision_mail">The email is already registered</string>
+    <string name="error_register">There was an error registering. Try again.</string>
+    <string name="complete_all">All fields must be completed.</string>
+    <string name="into_valid_mail">A valid email must be entered.</string>
+    <string name="short_password">The password must be at least 6 characters.</string>
 </resources>
