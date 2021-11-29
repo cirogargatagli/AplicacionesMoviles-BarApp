@@ -50,7 +50,7 @@
     <string name="google">Ingresar con Google</string>
     <string name="face">Ingresar con Facebook</string>
     <string name="ver_en_mapa">Ver todos</string>
-    <string name="upload">Subiendo...</string>
+    <string name="upload">Subiendo…</string>
     <string name="upload_perfil">Subiendo foto de perfil</string>
     <string name="upload_succesfully">Imagen cargada con éxito</string>
     <string name="weak_password">Contraseña débil, elige otra.</string>
@@ -60,5 +60,10 @@
     <string name="complete_all">Se deben completar todos los campos.</string>
     <string name="into_valid_mail">Se debe ingresar un mail válido.</string>
     <string name="short_password">La contraseña debe tener al menos 6 caracteres.</string>
+
+    <string name="download">Descargar</string>
+    <string name="download_succesfully">Imagen descargada exitosamente</string>
+
+    <string name="share">Compartir</string>
 
 </resources>

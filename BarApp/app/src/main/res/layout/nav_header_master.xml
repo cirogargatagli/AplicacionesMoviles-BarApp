@@ -6,7 +6,6 @@
     android:background="@color/primary"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:outlineAmbientShadowColor="@color/primary"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,12 +13,11 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="91dp"
+        android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="left"
-        android:layout_margin="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="-5dp"
         android:elevation="10dp"
         app:cardBackgroundColor="@color/primary"
         app:cardCornerRadius="40dp">
@@ -29,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/nav_header_desc"
+            android:layout_gravity="center"
             android:scaleY="1.4"
             android:scaleX="1.4"
             android:scaleType="centerCrop"

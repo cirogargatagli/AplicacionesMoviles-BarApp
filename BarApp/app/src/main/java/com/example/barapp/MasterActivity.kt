@@ -49,6 +49,7 @@ class MasterActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
+
         auth = FirebaseAuth.getInstance()
 
         navView.menu.findItem(R.id.nav_logout).setOnMenuItemClickListener{
@@ -111,7 +112,7 @@ class MasterActivity : AppCompatActivity() {
             loadingDialog.setTitle(R.string.upload_perfil)
             loadingDialog.progress = 10
             loadingDialog.max = 100
-            loadingDialog.setMessage(R.string.upload.toString())
+            loadingDialog.setMessage(getString(R.string.upload))
             loadingDialog.show()
 
             val file = File(this.filesDir, auth.currentUser!!.uid)

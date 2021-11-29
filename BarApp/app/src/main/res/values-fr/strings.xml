@@ -63,4 +63,9 @@
     <string name="into_valid_mail">Un email valide doit être saisi.</string>
     <string name="short_password">Le mot de passe doit comporter au moins 6 caractères.</string>
 
+    <string name="download">Télécharger</string>
+    <string name="download_succesfully">Image téléchargée avec succès</string>
+
+    <string name="share">Partager</string>
+
 </resources>

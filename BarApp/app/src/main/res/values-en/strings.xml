@@ -62,4 +62,9 @@
     <string name="complete_all">All fields must be completed.</string>
     <string name="into_valid_mail">A valid email must be entered.</string>
     <string name="short_password">The password must be at least 6 characters.</string>
+
+    <string name="download">Download</string>
+    <string name="download_succesfully">Image downloaded successfully</string>
+
+    <string name="share">Share</string>
 </resources>
