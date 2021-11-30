@@ -52,6 +52,8 @@
     <string name="face">Connectez-vous avec Facebook</string>
     <string name="ver_en_mapa">Voir tous</string>
 
+    <string name="select_day">Sélectionnez le jour</string>
+
     <string name="upload">Télécharger...</string>
     <string name="upload_perfil">Téléchargement d une photo de profil</string>
     <string name="upload_succesfully">Image téléchargée avec succès</string>
@@ -67,5 +69,9 @@
     <string name="download_succesfully">Image téléchargée avec succès</string>
 
     <string name="share">Partager</string>
+
+    <string name="dialog_text1">Vous avez réservé votre table dans</string>
+    <string name="dialog_text2">le jour</string>
+    <string name="reserva_exitosa">Réservation réussie!</string>
 
 </resources>

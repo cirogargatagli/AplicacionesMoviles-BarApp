@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_baseline_place_24"
+        android:drawableLeft="@drawable/locations"
         android:text="@string/ver_en_mapa"
-        android:textColor="@color/com_facebook_button_background_color" />
+        android:textColor="@color/primary" />
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

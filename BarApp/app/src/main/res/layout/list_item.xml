@@ -137,7 +137,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/item_address"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/item_address"
-                app:srcCompat="@drawable/ic_groups_24"
+                app:srcCompat="@drawable/mesa"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -152,13 +152,41 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/icon_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/item_capacity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/item_capacity"
+                android:src="@drawable/ic_baseline_calendar_today_24"
+                tools:ignore="ContentDescription" />
+
+            <EditText
+                android:id="@+id/et_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/select_day"
+                android:layout_marginStart="6dp"
+                android:textAppearance="?attr/textAppearanceBody2"/>
+
+        </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
             <Button
-                android:id="@+id/textButton"
+                android:id="@+id/btnReservar"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -168,7 +196,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:enabled="false"/>
 
             <ImageView
                 android:id="@+id/iconFacebook"

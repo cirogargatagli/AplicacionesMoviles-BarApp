@@ -28,7 +28,6 @@
     <string name="error_send_mail">Error al enviar el mail</string>
 
 
-
     <string name="logout">Cerrar sesión</string>
 
     <string name="confirm_logout">¿Está seguro que desea cerrar sesión?</string>
@@ -38,6 +37,8 @@
     <string name="error_login">Error al autenticarse</string>
 
     <string name="reservar">Reservar</string>
+
+    <string name="select_day">Seleccionar día</string>
 
     <string name="title_activity_maps">Ubicaciones</string>
     <string name="registrarse">Registrarse</string>
@@ -65,5 +66,9 @@
     <string name="download_succesfully">Imagen descargada exitosamente</string>
 
     <string name="share">Compartir</string>
+
+    <string name="dialog_text1">Reservaste tu mesa en</string>
+    <string name="dialog_text2">el día</string>
+    <string name="reserva_exitosa">¡Reserva exitosa!</string>
 
 </resources>

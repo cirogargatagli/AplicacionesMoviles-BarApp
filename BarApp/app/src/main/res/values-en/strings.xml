@@ -32,6 +32,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <string name="select_day">Select day</string>
+
     <string name="send_mail">Mail sent</string>
     <string name="error_send_mail">Error sending mail</string>
 
@@ -67,4 +69,8 @@
     <string name="download_succesfully">Image downloaded successfully</string>
 
     <string name="share">Share</string>
+
+    <string name="dialog_text1">You reserved your table in</string>
+    <string name="dialog_text2">the day</string>
+    <string name="reserva_exitosa">Successful booking!</string>
 </resources>
