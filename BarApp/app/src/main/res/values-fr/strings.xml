@@ -81,4 +81,5 @@
     <string name="he">le jour</string>
     <string name="exceeds_capacity">il n y a pas de tables disponibles sur</string>
 
+    <string name="error_location">Échec de l obtention de l emplacement</string>
 </resources>

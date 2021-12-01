@@ -80,4 +80,6 @@
     <string name="exist_reserve">You already have a reservation in</string>
     <string name="he">on</string>
     <string name="exceeds_capacity">there are no tables available on</string>
+
+    <string name="error_location">Failed to get location</string>
 </resources>

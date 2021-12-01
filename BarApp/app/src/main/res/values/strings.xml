@@ -77,7 +77,5 @@
     <string name="exist_reserve">Ya tenés una reserva en</string>
     <string name="he">el</string>
     <string name="exceeds_capacity">no tiene mesas disponibles el</string>
-
-
-
+    <string name="error_location">Error al obtener ubicación</string>
 </resources>

@@ -88,7 +88,7 @@
                 android:height="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceBody2"
+                android:textAppearance="?attr/textAppearanceCaption"
                 android:gravity="center"
                 android:layout_marginStart="10dp"
                 tools:text="Direccion" />

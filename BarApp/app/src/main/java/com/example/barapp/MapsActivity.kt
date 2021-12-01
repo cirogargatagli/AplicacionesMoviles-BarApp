@@ -109,6 +109,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
             }
         }
         catch (e: Exception){
+            Toast.makeText(this, R.string.error_location, Toast.LENGTH_LONG).show()
             startActivity(Intent(this, MasterActivity::class.java))
         }
     }
@@ -205,10 +206,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
 
     private fun saveLatAndLngOnBar(id:String, lat : Double, lng : Double){
         database = FirebaseDatabase.getInstance()
-        dbReference = database.reference.child("com.example.barapp.entity.Bar")
+        dbReference = database.reference.child("Bar")
         dbReference.child(id).child("Latitud").setValue(lat)
         dbReference.child(id).child("Longitud").setValue(lng)
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
