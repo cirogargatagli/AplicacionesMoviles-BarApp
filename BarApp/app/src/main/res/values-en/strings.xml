@@ -73,4 +73,11 @@
     <string name="dialog_text1">You reserved your table in</string>
     <string name="dialog_text2">the day</string>
     <string name="reserva_exitosa">Successful booking!</string>
+
+    <string name="activate_location">Activate the location of your device</string>
+    <string name="modify_permissions">To modify location permissions go to settings.</string>
+
+    <string name="exist_reserve">You already have a reservation in</string>
+    <string name="he">on</string>
+    <string name="exceeds_capacity">there are no tables available on</string>
 </resources>

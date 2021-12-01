@@ -1,5 +1,7 @@
 package com.example.barapp.adapter
 
+import android.Manifest
+import android.app.Activity
 import com.example.barapp.entity.Bar
 import android.graphics.Bitmap
 import android.net.Uri
@@ -27,7 +29,9 @@ import com.facebook.FacebookSdk.getApplicationContext
 import android.app.PendingIntent
 import android.content.*
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import com.example.barapp.DatePickerFragment
 import com.example.barapp.MasterActivity
@@ -78,7 +82,6 @@ class ItemAdapter(
         var dbReferenceDateSelected : DatabaseReference = dbReferenceBar
         var dateSelected : String? = null
 
-
         Picasso.get()
             .load(item.img)
             .into(holder.imageView)
@@ -104,7 +107,6 @@ class ItemAdapter(
                     val thread = Thread {
                         try {
                             val bitmap = Picasso.get().load(item.img).get()
-
                             val directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
                             val myPath = File(directory, item.nombre+".png")
                             var fos: FileOutputStream? = null
@@ -133,6 +135,7 @@ class ItemAdapter(
                                     intent.data = Uri.fromFile(myPath)
                                     intent.type = "image/*"
                                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
                                     val pendingIntent = PendingIntent.getActivity(
                                         getApplicationContext(), 0,
                                         intent, 0
@@ -145,14 +148,11 @@ class ItemAdapter(
                                         .setContentTitle(item.nombre + ".png")
                                         .setContentText(getApplicationContext().getString(R.string.download_succesfully))
                                         .setContentIntent(pendingIntent)
-
                                     manager.notify(1, notification.build())
                                 } catch (e: IOException) {
                                     e.printStackTrace()
                                 }
-
                             }
-
                         } catch (e: Exception) {
                         }
                     }
@@ -224,8 +224,9 @@ class ItemAdapter(
                                 var mesasOcupadas = it.value.toString().toInt()
 
                                 if(mesasOcupadas >= item.capacidad){
-                                    holder.editTextDate.error = "${item.nombre} no tiene mesas disponibles el $dateSelected"
-                                    Toast.makeText(getApplicationContext(), "${item.nombre} no tiene mesas disponibles el $dateSelected", Toast.LENGTH_SHORT).show()
+                                    val msgError = item.nombre + " " + getApplicationContext().getString(R.string.exceeds_capacity) + " " + dateSelected
+                                    holder.editTextDate.error = msgError
+                                    Toast.makeText(getApplicationContext(), msgError, Toast.LENGTH_SHORT).show()
                                     holder.btnReservar.isEnabled = false
                                 }
                             }
@@ -235,8 +236,9 @@ class ItemAdapter(
                     if (it.value == null){
                         holder.btnReservar.isEnabled = true
                     } else{
-                        holder.editTextDate.error = "Ya tenés una reserva en ${item.nombre} el $dateSelected"
-                        Toast.makeText(getApplicationContext(), "Ya tenés una reserva en ${item.nombre} el $dateSelected", Toast.LENGTH_SHORT).show()
+                        val msgError = getApplicationContext().getString(R.string.exist_reserve) + " " + item.nombre + " " + getApplicationContext().getString(R.string.he) + " " + dateSelected
+                        holder.editTextDate.error = msgError
+                        Toast.makeText(getApplicationContext(),  msgError, Toast.LENGTH_SHORT).show()
                         holder.btnReservar.isEnabled = false
                     }
                 }

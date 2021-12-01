@@ -1,14 +1,21 @@
 package com.example.barapp.ui.home
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import com.example.barapp.entity.Agenda
 import com.example.barapp.entity.Bar
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.barapp.MapsActivity
+import com.example.barapp.MasterActivity
 import com.example.barapp.adapter.ItemAdapter
 import com.example.barapp.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -22,8 +29,6 @@ class HomeFragment : Fragment() {
     private lateinit var  dbReference: DatabaseReference
     private lateinit var  database: FirebaseDatabase
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -54,8 +59,6 @@ class HomeFragment : Fragment() {
         //Inicializo la lista de Bares
         var bares = mutableListOf<Bar>()
 
-        var listaBares = ArrayList<Bar>()
-
         dbReference.addListenerForSingleValueEvent(
             object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -82,7 +85,6 @@ class HomeFragment : Fragment() {
                             )
                         //Agrego el bar a la lista
                         bares.add(bar)
-                        listaBares.add(bar)
                     }
                     val recycler = binding.recyclerView
                     recycler.adapter = ItemAdapter(bares)

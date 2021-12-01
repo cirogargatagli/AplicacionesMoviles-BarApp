@@ -26,7 +26,7 @@
     <string name="welcome">Bienvenue!</string>
 
     <string name="send_mail">Email envoyé</string>
-<!--    <string name="error_send_mail">Erreur lors de l\'envoi de l'e-mail</string>-->
+    <string name="error_send_mail">Erreur lors de l envoi de l e-mail</string>
 
 
 
@@ -73,5 +73,12 @@
     <string name="dialog_text1">Vous avez réservé votre table dans</string>
     <string name="dialog_text2">le jour</string>
     <string name="reserva_exitosa">Réservation réussie!</string>
+
+    <string name="activate_location">Activer la localisation de votre appareil</string>
+    <string name="modify_permissions">Pour modifier les autorisations de localisation, accédez aux paramètres.</string>
+
+    <string name="exist_reserve">Vous avez déjà une réservation dans</string>
+    <string name="he">le jour</string>
+    <string name="exceeds_capacity">il n y a pas de tables disponibles sur</string>
 
 </resources>

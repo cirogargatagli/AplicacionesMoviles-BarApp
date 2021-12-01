@@ -84,13 +84,13 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun validateForm(name:String, lastName: String, email:String,password:String) : String{
         if(TextUtils.isEmpty(name) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
-            return R.string.complete_all.toString()
+            return getString(R.string.complete_all)
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            return R.string.into_valid_mail.toString()
+            return getString(R.string.into_valid_mail)
         }
         if(password.length < 6){
-            return R.string.short_password.toString()
+            return getString(R.string.short_password)
         }
         return ""
     }

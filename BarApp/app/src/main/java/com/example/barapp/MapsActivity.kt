@@ -34,7 +34,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
     private lateinit var binding: ActivityMapsBinding
     private lateinit var  dbReference: DatabaseReference
     private lateinit var  database: FirebaseDatabase
-    private lateinit var listOfBares : ArrayList<Bar>
 
     companion object{
         const val REQUEST_CODE_LOCATION = 0
@@ -79,7 +78,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
 
     private fun requestLocationPermission(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
-            Toast.makeText(this, "Ve a ajustes y acepta los permisos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.modify_permissions, Toast.LENGTH_SHORT).show()
         }else{
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE_LOCATION)
         }
@@ -114,13 +113,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         }
     }
 
-    fun showAllMarkers(){
-        val latsAndLngs = mutableListOf<LatLng>()
+    private fun showAllMarkers(){
         database = FirebaseDatabase.getInstance()
         dbReference = database.reference.child("Bar")
         dbReference.addListenerForSingleValueEvent(
             object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val latsAndLngs = mutableListOf<LatLng>()
                     dataSnapshot.children.forEach {
                         val barObj = it.value as HashMap<*, *>
 
@@ -152,24 +151,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
                             }
                         }
                         catch (e: Exception){
+                            allBars = false
                             startActivity(Intent(this@MapsActivity, MasterActivity::class.java))
                         }
-
                     }
                     val constructor = LatLngBounds.Builder()
                     latsAndLngs.forEach {
                         constructor.include(it)
                     }
-                    // lat y long de bs as y la plata (por si no funciona el constructor con todas las latlng de los bares
-                    // constructor.include(LatLng(-34.6131500, -58.3772300))
-                    // constructor.include(LatLng(-34.9214500, -57.9545300))
                     val limites = constructor.build()
                     val ancho = resources.displayMetrics.widthPixels
                     val alto = resources.displayMetrics.heightPixels
-                    val padding = (alto * 0.25).toInt()
+                    val padding = (alto * 0.2).toInt()
                     mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(limites,ancho, alto, padding))
                     allBars = false
-
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -184,16 +179,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location : Location? ->
-                    val latLngUser = location?.let { LatLng(it.latitude, location.longitude) }
-                    val constructor = LatLngBounds.Builder()
-                    constructor.include(latLngBar)
-                    if (latLngUser != null) {
+                    if(location == null){
+                        Toast.makeText(this, R.string.activate_location, Toast.LENGTH_SHORT).show()
+                        mMap.addMarker(MarkerOptions().position(latLngBar).title(nombre))
+                        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLngBar))
+                    } else{
+                        val latLngUser = location?.let { LatLng(it.latitude, location.longitude) }
+                        val constructor = LatLngBounds.Builder()
+                        constructor.include(latLngBar)
                         constructor.include(latLngUser)
                         val limites = constructor.build()
 
                         val ancho = resources.displayMetrics.widthPixels
                         val alto = resources.displayMetrics.heightPixels
-                        val padding = (alto * 0.25).toInt()
+                        val padding = (alto * 0.2).toInt()
 
                         mMap.addMarker(MarkerOptions().position(latLngBar).title(nombre))
                         mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(limites, ancho, alto, padding))
@@ -202,7 +201,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         }else{
             requestLocationPermission()
         }
-
     }
 
     private fun saveLatAndLngOnBar(id:String, lat : Double, lng : Double){
@@ -222,7 +220,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
                 mMap.isMyLocationEnabled = true
                 preMarkers()
             }else{
-                Toast.makeText(this, "Para activar la localización ve a ajustes.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.modify_permissions, Toast.LENGTH_SHORT).show()
             }
             else -> {}
         }
@@ -233,7 +231,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         if(!::mMap.isInitialized) return
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             mMap.isMyLocationEnabled = false
-            Toast.makeText(this, "Para activar la localización ve a ajustes.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.modify_permissions, Toast.LENGTH_SHORT).show()
         }
     }
 
