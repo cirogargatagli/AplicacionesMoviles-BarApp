@@ -30,6 +30,7 @@ import android.app.PendingIntent
 import android.content.*
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.ColorSpace
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -40,16 +41,23 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ItemAdapter(
     private val dataset: List<Bar>
-) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(), Filterable {
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder.
     // Each data item is just an Affirmation object.
+
+    var baresFilterList = ArrayList<Bar>()
+
+    init {
+        baresFilterList = dataset as ArrayList<Bar>
+    }
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.item_title)
@@ -321,4 +329,31 @@ class ItemAdapter(
      * Return the size of your dataset (invoked by the layout manager)
      */
     override fun getItemCount() = dataset.size
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    baresFilterList = dataset as ArrayList<Bar>
+                } else {
+                    val resultList = ArrayList<Bar>()
+                    for (row in dataset) {
+                        if (row.nombre.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                            resultList.add(row)
+                        }
+                    }
+                    baresFilterList = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = baresFilterList
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                baresFilterList = results?.values as ArrayList<Bar>
+                notifyDataSetChanged()
+            }
+        }
+    }
 }
