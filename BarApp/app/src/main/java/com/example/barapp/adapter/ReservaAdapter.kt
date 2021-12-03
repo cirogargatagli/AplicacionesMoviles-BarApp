@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.barapp.MapsActivity
 import com.example.barapp.R
 import com.example.barapp.entity.Reserva
 import com.squareup.picasso.Picasso
@@ -21,7 +22,7 @@ class ReservaAdapter(
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.item_title_reserva)
-        val imageView: ImageView = view.findViewById(R.id.item_image_reserva)
+        //val imageView: ImageView = view.findViewById(R.id.item_image_reserva)
         val textAddress: TextView = view.findViewById(R.id.item_address_reserva)
         val lineAddress : View = view.findViewById(R.id.line_address_reserva)
         val textPhone : TextView = view.findViewById(R.id.item_phone_reserva)
@@ -32,22 +33,35 @@ class ReservaAdapter(
         val instagram : ImageView = view.findViewById(R.id.iconInstagram_reserva)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservaAdapter.ItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item_reserva, parent, false)
         return ItemViewHolder(adapterLayout)
     }
 
-    override fun onBindViewHolder(holder: ReservaAdapter.ItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
 
-        Picasso.get()
+        /*Picasso.get()
             .load(item.imgBar)
-            .into(holder.imageView)
+            .into(holder.imageView)*/
 
         holder.textView.text = item.nombreBar
+
         holder.textAddress.text = item.direccionBar
+        /*holder.lineAddress.setOnClickListener{
+            val intent = Intent(it.context, MapsActivity::class.java)
+            intent.putExtra("Direccion", item.direccionBar)
+            intent.putExtra("Nombre", item.nombreBar)
+            ContextCompat.startActivity(it.context, intent, Bundle())
+        }*/
+
         holder.textPhone.text = item.telefonoBar
+        holder.linePhone.setOnClickListener{
+            val i = Intent(Intent.ACTION_DIAL, Uri.parse("tel:+" + item.telefonoBar))
+            ContextCompat.startActivity(it.context, i, Bundle())
+        }
+
         holder.textDate.text = item.fecha
 
         holder.facebook.setOnClickListener{

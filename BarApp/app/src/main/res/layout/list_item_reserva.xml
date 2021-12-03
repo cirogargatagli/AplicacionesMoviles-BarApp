@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp" >
+    android:layout_margin="8dp"
+    app:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,19 +14,19 @@
         android:orientation="vertical"
         android:padding="16dp"
         >
-
+        <!--
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:id="@+id/item_image_reserva"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop" />
-
+        -->
         <TextView
             android:id="@+id/item_title_reserva"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
+            android:textAlignment="textStart"
             android:textAppearance="?attr/textAppearanceHeadline5"
             tools:text="Nombre del bar" />
 
