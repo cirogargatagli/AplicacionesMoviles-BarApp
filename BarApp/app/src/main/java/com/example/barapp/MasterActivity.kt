@@ -104,7 +104,7 @@ class MasterActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery
+                R.id.nav_home, R.id.nav_reservation
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
