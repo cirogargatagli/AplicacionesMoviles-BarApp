@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.barapp.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_reservation"
+        android:name="com.example.barapp.ui.reservations.ReservationFragment"
         android:label="@string/menu_reservas"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_reservation" />
 
     <fragment
         android:id="@+id/nav_slideshow"
