@@ -5,6 +5,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,6 +30,7 @@ import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import java.io.File
+import java.util.*
 
 class MasterActivity : AppCompatActivity() {
 
@@ -72,6 +74,11 @@ class MasterActivity : AppCompatActivity() {
             true
         }
 
+        navView.menu.findItem(R.id.nav_settings).setOnMenuItemClickListener {
+            goSettings()
+            true
+        }
+
         val header = navView.getHeaderView(0)
         val prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE)
         val headerName = header.findViewById<TextView>(R.id.txtNameNav)
@@ -97,7 +104,7 @@ class MasterActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -144,14 +151,16 @@ class MasterActivity : AppCompatActivity() {
         }
     }
 
+    private fun goSettings(){
+        startActivity(Intent(this,SettingsActivity::class.java))
+    }
+
     private fun action(){
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.master, menu)
         return true
     }
 
