@@ -18,6 +18,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_reservas">My reservations</string>
     <string name="menu_slideshow">Otro fragment</string>
+    <string name="menu_settings">Settings</string>
 
     <string name="name">Name</string>
     <string name="last_name">Last Name</string>
@@ -82,4 +83,11 @@
     <string name="exceeds_capacity">there are no tables available on</string>
 
     <string name="error_location">Failed to get location</string>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="preferences_header">Preferences</string>
+
+    <string name="language_title">Language</string>
 </resources>
