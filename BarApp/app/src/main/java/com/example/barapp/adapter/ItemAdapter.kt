@@ -341,7 +341,7 @@ class ItemAdapter(
                     baresFilterList = datasetAux as ArrayList<Bar>
                 } else {
                     val resultList = ArrayList<Bar>()
-                    for (row in dataset) {
+                    for (row in datasetAux) {
                         if (row.nombre.lowercase().contains(constraint.toString().lowercase())) {
                             resultList.add(row)
                         }
