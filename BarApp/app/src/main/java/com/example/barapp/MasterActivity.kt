@@ -4,8 +4,8 @@ import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,7 +30,6 @@ import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import java.io.File
-import java.util.*
 
 class MasterActivity : AppCompatActivity() {
 
@@ -53,6 +52,8 @@ class MasterActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
 
         auth = FirebaseAuth.getInstance()
+
+
 
         navView.menu.findItem(R.id.nav_logout).setOnMenuItemClickListener{
             val builder = AlertDialog.Builder(this)
@@ -87,7 +88,7 @@ class MasterActivity : AppCompatActivity() {
         val imgPerfil = prefs.getString("Imagen", "").toString()
 
         headerImg.setOnClickListener(){
-            val intent = Intent(CropImage.getPickImageChooserIntent(this))
+            val intent = Intent(CropImage.getPickImageChooserIntent(this, "Seleccione fuente", false, true))
             resultLauncher.launch(intent)
         }
 

@@ -9,11 +9,10 @@
             app:key="language"
             app:title="@string/language_title"
             app:useSimpleSummaryProvider="true" />
-        <SwitchPreferenceCompat
+        <SwitchPreference
             android:key="theme"
             android:title="Dark mode">
-
-        </SwitchPreferenceCompat>
+        </SwitchPreference>
     </PreferenceCategory>
 
 </PreferenceScreen>
