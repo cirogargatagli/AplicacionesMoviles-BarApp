@@ -53,27 +53,31 @@ class ReservationFragment : Fragment() {
 
         dbReference.child(auth.currentUser!!.uid).get().addOnSuccessListener {
             val usuario = it.value as HashMap<*,*>
-            val reservas= usuario["Reservas"] as HashMap<*,*>
+            val reservasAux = usuario["Reservas"]
+            if (reservasAux != null){
+                val reservas= usuario["Reservas"] as HashMap<*,*>
 
-            val listReservas = reservas.values
+                val listReservas = reservas.values
 
-            listReservas.forEach{
-                val mapaReserva = it as HashMap<*,*>
-                var reserva = Reserva(
-                    mapaReserva["fecha"].toString(),
-                    mapaReserva["nombreBar"].toString(),
-                    mapaReserva["direccionBar"].toString(),
-                    mapaReserva["imgBar"].toString(),
-                    mapaReserva["telefonoBar"].toString(),
-                    mapaReserva["facebook"].toString(),
-                    mapaReserva["instagram"].toString(),
-                    mapaReserva["id"].toString()
-                )
-                reservasMutable.add(reserva)
+                listReservas.forEach{
+                    val mapaReserva = it as HashMap<*,*>
+                    var reserva = Reserva(
+                        mapaReserva["fecha"].toString(),
+                        mapaReserva["nombreBar"].toString(),
+                        mapaReserva["direccionBar"].toString(),
+                        mapaReserva["imgBar"].toString(),
+                        mapaReserva["telefonoBar"].toString(),
+                        mapaReserva["facebook"].toString(),
+                        mapaReserva["instagram"].toString(),
+                        mapaReserva["id"].toString()
+                    )
+                    reservasMutable.add(reserva)
+                }
+                val recycler = binding.recyclerViewReserva
+                recycler.adapter = ReservaAdapter(reservasMutable)
+                recycler.setHasFixedSize(true)
             }
-            val recycler = binding.recyclerViewReserva
-            recycler.adapter = ReservaAdapter(reservasMutable)
-            recycler.setHasFixedSize(true)
+
         }
     }
 
