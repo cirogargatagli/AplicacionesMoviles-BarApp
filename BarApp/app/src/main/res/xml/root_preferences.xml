@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/preferences_header">
         <ListPreference
@@ -8,6 +9,11 @@
             app:key="language"
             app:title="@string/language_title"
             app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            android:key="theme"
+            android:title="Dark mode">
+
+        </SwitchPreferenceCompat>
     </PreferenceCategory>
 
 </PreferenceScreen>

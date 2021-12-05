@@ -12,6 +12,7 @@ import java.util.*
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Handler
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 
 
@@ -38,6 +39,14 @@ class SettingsActivity : AppCompatActivity() {
                 res.updateConfiguration(config, dpMetrics)
                 startActivity(Intent(this, SettingsActivity::class.java))
                 finish()
+            }
+            if(key == "theme"){
+                val darkMode = prefs.getBoolean("theme", false)
+                if(darkMode){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
             }
         }
         preferences.registerOnSharedPreferenceChangeListener(listener)
