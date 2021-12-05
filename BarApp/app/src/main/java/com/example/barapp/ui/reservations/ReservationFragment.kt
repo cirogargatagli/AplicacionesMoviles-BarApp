@@ -74,10 +74,9 @@ class ReservationFragment : Fragment() {
                     reservasMutable.add(reserva)
                 }
                 val recycler = binding.recyclerViewReserva
-                recycler.adapter = ReservaAdapter(reservasMutable)
+                recycler.adapter = ReservaAdapter(reservasMutable as ArrayList<Reserva>)
                 recycler.setHasFixedSize(true)
             }
-
         }
     }
 
