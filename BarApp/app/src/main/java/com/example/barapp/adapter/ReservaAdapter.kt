@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso
 import java.lang.Exception
 
 class ReservaAdapter(
-    private val dataset: List<Reserva>
+    private var dataset: ArrayList<Reserva>
 ) : RecyclerView.Adapter<ReservaAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -117,6 +117,8 @@ class ReservaAdapter(
                             val decrement = it.value.toString().toInt() - 1
                             dbReferenceBar.setValue(decrement)
                             Toast.makeText(holder.btnCancelarReservar.context, R.string.canceled_reserve, Toast.LENGTH_LONG).show()
+
+                            removeAt(position)
                         }
                     }
                 }
@@ -126,6 +128,12 @@ class ReservaAdapter(
             val alert = builder.create()
             alert.show()
         }
+    }
+
+    private fun removeAt(position: Int) {
+        dataset.removeAt(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, dataset.size);
     }
 
     override fun getItemCount() = dataset.size
