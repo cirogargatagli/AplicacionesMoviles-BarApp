@@ -268,7 +268,7 @@ class ItemAdapter(
                     }
                 }
             }
-            val reserva = Reserva(dateSelected, item.nombre,item.direccion, item.img, item.telefono, item.facebook, item.instagram.toString())
+            val reserva = Reserva(dateSelected, item.nombre,item.direccion, item.img, item.telefono, item.facebook, item.instagram.toString(), item.id.toString())
             dbReferenceUsuario.child(dateSelected + item.nombre).setValue(reserva)
 
             holder.editTextDate.setText("")

@@ -1,6 +1,7 @@
 package com.example.barapp.adapter
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,11 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.barapp.MapsActivity
 import com.example.barapp.R
 import com.example.barapp.entity.Reserva
+import com.facebook.login.LoginManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
@@ -41,6 +47,11 @@ class ReservaAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
+
+        val auth = FirebaseAuth.getInstance()
+        val dbReferenceBar = FirebaseDatabase.getInstance().reference.child("Bar").child(item.id!!).child("Agenda").child(item.fecha.toString()).child("MesasOcupadas")
+        val dbReferenceUsuario = FirebaseDatabase.getInstance().reference.child("Usuario").child(auth.currentUser?.uid.toString()).child("Reservas")
+        var dateSelected : String? = null
 
         /*Picasso.get()
             .load(item.imgBar)
@@ -94,6 +105,26 @@ class ReservaAdapter(
             } catch (e: ActivityNotFoundException) {
                 ContextCompat.startActivity(it.context, forBrowser, null)
             }
+        }
+
+        holder.btnCancelarReservar.setOnClickListener {
+            val builder = AlertDialog.Builder(holder.btnCancelarReservar.context)
+            builder.setMessage(R.string.confirm_cancel_reserve)
+                .setCancelable(false)
+                .setPositiveButton(R.string.confirm) { dialog, id ->
+                    dbReferenceUsuario.child(item.fecha + item.nombreBar).removeValue().addOnSuccessListener {
+                        dbReferenceBar.get().addOnSuccessListener {
+                            val decrement = it.value.toString().toInt() - 1
+                            dbReferenceBar.setValue(decrement)
+                            Toast.makeText(holder.btnCancelarReservar.context, R.string.canceled_reserve, Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+                .setNegativeButton(R.string.cancelar) { dialog, id ->
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
     }
 

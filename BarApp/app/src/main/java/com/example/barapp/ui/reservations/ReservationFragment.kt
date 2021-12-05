@@ -66,7 +66,8 @@ class ReservationFragment : Fragment() {
                     mapaReserva["imgBar"].toString(),
                     mapaReserva["telefonoBar"].toString(),
                     mapaReserva["facebook"].toString(),
-                    mapaReserva["instagram"].toString()
+                    mapaReserva["instagram"].toString(),
+                    mapaReserva["id"].toString()
                 )
                 reservasMutable.add(reserva)
             }

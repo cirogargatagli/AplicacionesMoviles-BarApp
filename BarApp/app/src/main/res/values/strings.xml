@@ -86,4 +86,8 @@
 
     <string name="language_title">Idioma</string>
     <string name="cancelar">Cancelar</string>
+
+    <string name="confirm_cancel_reserve">¿Está seguro que desea cancelar esta reserva?</string>
+    <string name="confirm">Confirmar</string>
+    <string name="canceled_reserve">Reserva cancelada correctamente.</string>
 </resources>
