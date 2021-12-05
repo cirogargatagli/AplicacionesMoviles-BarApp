@@ -14,78 +14,43 @@
         android:orientation="vertical"
         android:padding="16dp"
         >
-
+        <!--
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="194dp"
-            android:id="@+id/item_image"
+            android:layout_height="120dp"
+            android:id="@+id/item_image_reserva"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop" />
-
+        -->
         <TextView
-            android:id="@+id/item_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/item_title_reserva"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
+            android:textAlignment="textStart"
             android:textAppearance="?attr/textAppearanceHeadline5"
             tools:text="Nombre del bar" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:numStars="5"
-                tools:rating="4.5"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/item_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ratingBar"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="4.5" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="?android:attr/listDivider" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:id="@+id/line_address"
+            android:id="@+id/line_address_reserva"
             >
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/item_address"
+                app:layout_constraintBottom_toBottomOf="@id/item_address_reserva"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/item_address"
+                app:layout_constraintTop_toTopOf="@id/item_address_reserva"
                 app:srcCompat="@drawable/ic_home_place"
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/item_address"
+                android:id="@+id/item_address_reserva"
                 android:height="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,24 +62,24 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/line_phone"
+            android:id="@+id/line_phone_reserva"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical" >
 
             <ImageView
-                android:id="@+id/icon_phone"
+                android:id="@+id/icon_phone_reserva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/item_address"
+                app:layout_constraintBottom_toBottomOf="@id/item_address_reserva"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/item_address"
+                app:layout_constraintTop_toTopOf="@id/item_address_reserva"
                 app:srcCompat="@drawable/ic_phone_24"
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/item_phone"
+                android:id="@+id/item_phone_reserva"
                 android:height="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,52 +97,24 @@
             android:gravity="center_vertical" >
 
             <ImageView
-                android:id="@+id/icon_capacity"
+                android:id="@+id/icon_calendar_reserva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/item_address"
+                app:layout_constraintBottom_toBottomOf="@id/icon_phone_reserva"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/item_address"
-                app:srcCompat="@drawable/mesa"
+                app:layout_constraintTop_toTopOf="@id/icon_phone_reserva"
+                android:src="@drawable/ic_baseline_calendar_today_24"
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/item_capacity"
+                android:id="@+id/item_calendar_reserva"
                 android:height="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:gravity="center"
                 android:layout_marginStart="10dp"
-                tools:text="Capacidad" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical" >
-
-            <ImageView
-                android:id="@+id/icon_calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/item_capacity"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/item_capacity"
-                android:src="@drawable/ic_baseline_calendar_today_24"
-                tools:ignore="ContentDescription" />
-
-            <EditText
-                android:id="@+id/et_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false"
-                android:hint="@string/select_day"
-                android:layout_marginStart="6dp"
-                android:textAppearance="?attr/textAppearanceBody2"/>
+                tools:text="11-11-2021" />
 
         </LinearLayout>
 
@@ -187,11 +124,11 @@
             >
 
             <Button
-                android:id="@+id/btnReservar"
+                android:id="@+id/btnCancelarReserva"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/reservar"
+                android:text="Cancelar"
                 android:textAlignment="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -201,19 +138,19 @@
                 android:enabled="false"/>
 
             <ImageView
-                android:id="@+id/iconFacebook"
+                android:id="@+id/iconFacebook_reserva"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/iconInstagram"
+                app:layout_constraintEnd_toStartOf="@+id/iconInstagram_reserva"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/facebook"
                 tools:ignore="MissingConstraints"
                 android:contentDescription="@string/facebook" />
 
             <ImageView
-                android:id="@+id/iconInstagram"
+                android:id="@+id/iconInstagram_reserva"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -225,5 +162,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-
 </com.google.android.material.card.MaterialCardView>

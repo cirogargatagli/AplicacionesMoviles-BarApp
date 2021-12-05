@@ -286,7 +286,7 @@ class ItemAdapter(
 
         holder.facebook.setOnClickListener{
             try {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/" + item.facebook))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/" + item.facebook))
                 startActivity(it.context, intent, Bundle())
             } catch (e: Exception) {
                 startActivity(
