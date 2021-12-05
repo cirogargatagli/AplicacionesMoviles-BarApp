@@ -45,7 +45,7 @@ import kotlin.collections.ArrayList
 
 
 class ItemAdapter(
-    private val dataset: List<Bar>
+    private var dataset: ArrayList<Bar>
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(), Filterable {
 
     // Provide a reference to the views for each data item
@@ -54,9 +54,11 @@ class ItemAdapter(
     // Each data item is just an Affirmation object.
 
     var baresFilterList = ArrayList<Bar>()
+    var datasetAux = ArrayList<Bar>()
 
     init {
-        baresFilterList = dataset as ArrayList<Bar>
+        baresFilterList = dataset
+        datasetAux = dataset
     }
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -335,11 +337,12 @@ class ItemAdapter(
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 if (charSearch.isEmpty()) {
-                    baresFilterList = dataset as ArrayList<Bar>
+                    dataset = datasetAux
+                    baresFilterList = datasetAux as ArrayList<Bar>
                 } else {
                     val resultList = ArrayList<Bar>()
                     for (row in dataset) {
-                        if (row.nombre.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        if (row.nombre.lowercase().contains(constraint.toString().lowercase())) {
                             resultList.add(row)
                         }
                     }
@@ -352,6 +355,7 @@ class ItemAdapter(
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 baresFilterList = results?.values as ArrayList<Bar>
+                dataset = baresFilterList
                 notifyDataSetChanged()
             }
         }
