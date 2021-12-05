@@ -1,25 +1,25 @@
 package com.example.barapp.ui.home
 
-import android.Manifest
-import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import com.example.barapp.entity.Agenda
 import com.example.barapp.entity.Bar
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.appcompat.view.menu.ActionMenuItemView
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuItemCompat
+import androidx.core.view.MenuItemCompat.getActionView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.barapp.MapsActivity
-import com.example.barapp.MasterActivity
 import com.example.barapp.adapter.ItemAdapter
 import com.example.barapp.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.example.barapp.R
 
 class HomeFragment : Fragment() {
 
@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var  dbReference: DatabaseReference
     private lateinit var  database: FirebaseDatabase
+    private lateinit var adapter : ItemAdapter
 
     private val binding get() = _binding!!
 
@@ -46,16 +47,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        showBares()
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    private fun showBares() {
         //Inicializo la lista de Bares
         var bares = mutableListOf<Bar>()
 
@@ -82,12 +73,13 @@ class HomeFragment : Fragment() {
                             Agenda(agendaObj["Dias"].toString(), agendaObj["Inicio"].toString() , agendaObj["Fin"].toString()),
                             lat?.toString()?.toDouble(),
                             lng?.toString()?.toDouble()
-                            )
+                        )
                         //Agrego el bar a la lista
                         bares.add(bar)
                     }
                     val recycler = binding.recyclerView
-                    recycler.adapter = ItemAdapter(bares)
+                    adapter = ItemAdapter(bares as ArrayList<Bar>)
+                    recycler.adapter = adapter
                     recycler.setHasFixedSize(true)
                 }
 
@@ -100,5 +92,49 @@ class HomeFragment : Fragment() {
             intent.putExtra("allBars", true)
             startActivity(intent)
         }
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                Log.d("onQueryTextChange", "query: " + query)
+                adapter?.filter?.filter(query)
+                return true
+            }
+        })
+
+        searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
+                adapter?.filter?.filter("")
+                return true
+            }
+
+            override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
+                return true
+            }
+        })
+
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

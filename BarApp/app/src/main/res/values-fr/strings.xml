@@ -90,4 +90,5 @@
     <string name="preferences_header">Préférences</string>
 
     <string name="language_title">Langue</string>
+    <string name="cancelar">Annuler</string>
 </resources>
