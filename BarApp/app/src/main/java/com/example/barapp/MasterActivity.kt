@@ -1,11 +1,14 @@
 package com.example.barapp
 
+import android.Manifest
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,6 +23,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.barapp.databinding.ActivityMasterBinding
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +35,7 @@ import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import java.io.File
+import java.security.Permission
 
 class MasterActivity : AppCompatActivity() {
 
@@ -88,8 +94,13 @@ class MasterActivity : AppCompatActivity() {
         val imgPerfil = prefs.getString("Imagen", "").toString()
 
         headerImg.setOnClickListener(){
-            val intent = Intent(CropImage.getPickImageChooserIntent(this, "Seleccione fuente", false, true))
-            resultLauncher.launch(intent)
+            if(CropImage.isExplicitCameraPermissionRequired(this) && CropImage.isReadExternalStoragePermissionsRequired(this, Uri.parse("com.example.barapp"))) {
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
+            }
+            else {
+                val intent = Intent(CropImage.getPickImageChooserIntent(this, "Seleccione cómo desea subir su imagen", true, true))
+                resultLauncher.launch(intent)
+            }
         }
 
         if(imgPerfil != ""){
@@ -110,6 +121,26 @@ class MasterActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode){
+            0 -> if(grantResults.isNotEmpty() &&
+                grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                grantResults[1] == PackageManager.PERMISSION_GRANTED &&
+                grantResults[2] == PackageManager.PERMISSION_GRANTED){
+                val intent = Intent(CropImage.getPickImageChooserIntent(this, "Seleccione cómo desea subir su imagen", true, true))
+                resultLauncher.launch(intent)
+            }else{
+                Toast.makeText(this, R.string.modify_permissions, Toast.LENGTH_SHORT).show()
+            }
+            else -> {}
+        }
     }
 
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

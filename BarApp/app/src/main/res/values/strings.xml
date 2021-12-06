@@ -73,7 +73,7 @@
     <string name="reserva_exitosa">¡Reserva exitosa!</string>
 
     <string name="activate_location">Activá la ubicación de tu dispositivo.</string>
-    <string name="modify_permissions">Para modificar permisos de localización ve a ajustes.</string>
+    <string name="modify_permissions">Para modificar permisos ve a ajustes.</string>
 
     <string name="exist_reserve">Ya tenés una reserva en</string>
     <string name="he">el</string>
