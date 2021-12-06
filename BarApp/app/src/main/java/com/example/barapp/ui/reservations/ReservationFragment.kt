@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.barapp.R
 import com.example.barapp.adapter.ReservaAdapter
 import com.example.barapp.databinding.FragmentReservationBinding
 import com.example.barapp.entity.Bar
@@ -43,18 +45,22 @@ class ReservationFragment : Fragment() {
         _binding = FragmentReservationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        showReservas()
+        showReservas(root)
 
         return root
     }
 
-    private fun showReservas() {
+    private fun showReservas(root : View) {
         var reservasMutable = mutableListOf<Reserva>()
+        val textReserva : TextView = root.findViewById(R.id.sinReserva)
+        val imagenReserva : ImageView = root.findViewById(R.id.imagenSinReserva)
 
         dbReference.child(auth.currentUser!!.uid).get().addOnSuccessListener {
             val usuario = it.value as HashMap<*,*>
             val reservasAux = usuario["Reservas"]
             if (reservasAux != null){
+                textReserva.visibility = View.GONE
+                imagenReserva.visibility = View.GONE
                 val reservas= usuario["Reservas"] as HashMap<*,*>
 
                 val listReservas = reservas.values
@@ -76,6 +82,9 @@ class ReservationFragment : Fragment() {
                 val recycler = binding.recyclerViewReserva
                 recycler.adapter = ReservaAdapter(reservasMutable as ArrayList<Reserva>)
                 recycler.setHasFixedSize(true)
+            } else {
+                textReserva.visibility = View.VISIBLE
+                imagenReserva.visibility = View.VISIBLE
             }
         }
     }

@@ -91,4 +91,8 @@
 
     <string name="language_title">Langue</string>
     <string name="cancelar">Annuler</string>
+    <string name="confirm_cancel_reserve">Êtes-vous sûr de vouloir annuler cette réservation ?</string>
+    <string name="confirm">Confirmer</string>
+    <string name="canceled_reserve">Réservation annulée avec succès.</string>
+    <string name="sin_reservas">Il n y a pas de réservations</string>
 </resources>
