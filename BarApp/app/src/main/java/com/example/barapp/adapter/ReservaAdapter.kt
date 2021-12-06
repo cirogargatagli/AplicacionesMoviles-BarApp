@@ -3,6 +3,7 @@ package com.example.barapp.adapter
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,7 +25,9 @@ import org.w3c.dom.Text
 import java.lang.Exception
 
 class ReservaAdapter(
-    private var dataset: ArrayList<Reserva>
+    private var dataset: ArrayList<Reserva>,
+    private var imageSinReserva : ImageView,
+    private var textSinReserva : TextView
 ) : RecyclerView.Adapter<ReservaAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -118,7 +121,6 @@ class ReservaAdapter(
                             val decrement = it.value.toString().toInt() - 1
                             dbReferenceBar.setValue(decrement)
                             Toast.makeText(holder.btnCancelarReservar.context, R.string.canceled_reserve, Toast.LENGTH_LONG).show()
-
                             removeAt(position)
                         }
                     }
@@ -133,6 +135,10 @@ class ReservaAdapter(
 
     private fun removeAt(position: Int) {
         dataset.removeAt(position);
+        if(dataset.size == 0){
+            imageSinReserva.visibility = View.VISIBLE
+            textSinReserva.visibility = View.VISIBLE
+        }
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, dataset.size);
     }

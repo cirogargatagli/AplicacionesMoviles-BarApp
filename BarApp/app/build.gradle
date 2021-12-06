@@ -7,7 +7,7 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\Dami_\\.android\\debug.keystore')
+            storeFile file('C:\\Users\\Ciro\\.android\\debug.keystore')
             keyAlias 'androiddebugkey'
         }
     }

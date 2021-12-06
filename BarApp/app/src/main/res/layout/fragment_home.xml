@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical">
+
     <Button
         android:id="@+id/btnVerMapa"
         android:layout_width="300dp"
@@ -14,12 +15,32 @@
         android:text="@string/ver_en_mapa"
         android:textColor="@color/primary" />
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ImageView
+        android:id="@+id/imagenSinBusqueda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_search_off_24"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textSinBusqueda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sin_resultados"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:textColor="@color/grey"
+        android:visibility="gone" />
+
+
+
+    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MasterActivity">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

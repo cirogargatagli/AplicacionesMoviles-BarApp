@@ -91,4 +91,5 @@
     <string name="confirm">Confirmar</string>
     <string name="canceled_reserve">Reserva cancelada correctamente.</string>
     <string name="sin_reservas">No existen reservas</string>
+    <string name="sin_resultados">La búsqueda no arrojó resultados</string>
 </resources>

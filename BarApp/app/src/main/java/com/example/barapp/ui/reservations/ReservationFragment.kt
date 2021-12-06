@@ -80,7 +80,7 @@ class ReservationFragment : Fragment() {
                     reservasMutable.add(reserva)
                 }
                 val recycler = binding.recyclerViewReserva
-                recycler.adapter = ReservaAdapter(reservasMutable as ArrayList<Reserva>)
+                recycler.adapter = ReservaAdapter(reservasMutable as ArrayList<Reserva>, imagenReserva, textReserva)
                 recycler.setHasFixedSize(true)
             } else {
                 textReserva.visibility = View.VISIBLE

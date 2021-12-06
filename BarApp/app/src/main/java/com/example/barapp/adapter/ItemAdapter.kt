@@ -31,11 +31,13 @@ import android.content.*
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.ColorSpace
+import android.media.Image
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import com.example.barapp.DatePickerFragment
 import com.example.barapp.MasterActivity
+import com.example.barapp.databinding.FragmentHomeBinding
 import com.example.barapp.entity.Reserva
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -45,7 +47,9 @@ import kotlin.collections.ArrayList
 
 
 class ItemAdapter(
-    private var dataset: ArrayList<Bar>
+    private var dataset: ArrayList<Bar>,
+    private var imagenSinBusqueda : ImageView,
+    private var textoSinBusqueda : TextView
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(), Filterable {
 
     // Provide a reference to the views for each data item
@@ -59,6 +63,8 @@ class ItemAdapter(
     init {
         baresFilterList = dataset
         datasetAux = dataset
+        imagenSinBusqueda = imagenSinBusqueda
+        textoSinBusqueda = textoSinBusqueda
     }
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -355,6 +361,13 @@ class ItemAdapter(
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 baresFilterList = results?.values as ArrayList<Bar>
+                if(baresFilterList.size == 0){
+                    imagenSinBusqueda.visibility = View.VISIBLE
+                    textoSinBusqueda.visibility = View.VISIBLE
+                } else{
+                    imagenSinBusqueda.visibility = View.GONE
+                    textoSinBusqueda.visibility = View.GONE
+                }
                 dataset = baresFilterList
                 notifyDataSetChanged()
             }

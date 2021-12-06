@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
                         bares.add(bar)
                     }
                     val recycler = binding.recyclerView
-                    adapter = ItemAdapter(bares as ArrayList<Bar>)
+                    adapter = ItemAdapter(bares as ArrayList<Bar>, root.findViewById(R.id.imagenSinBusqueda), root.findViewById(R.id.textSinBusqueda))
                     recycler.adapter = adapter
                     recycler.setHasFixedSize(true)
                 }

@@ -95,4 +95,5 @@
     <string name="confirm">Confirmer</string>
     <string name="canceled_reserve">Réservation annulée avec succès.</string>
     <string name="sin_reservas">Il n y a pas de réservations</string>
+    <string name="sin_resultados">La recherche n a donné aucun résultat</string>
 </resources>
