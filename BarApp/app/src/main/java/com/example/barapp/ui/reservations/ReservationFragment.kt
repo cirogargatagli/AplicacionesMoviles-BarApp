@@ -17,6 +17,12 @@ import com.example.barapp.entity.Reserva
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class ReservationFragment : Fragment() {
 
@@ -51,6 +57,10 @@ class ReservationFragment : Fragment() {
     }
 
     private fun showReservas(root : View) {
+        val sdf = SimpleDateFormat("dd-MM-yyyy")
+        val day = Date()
+        val currentDay = sdf.format(day)
+
         var reservasMutable = mutableListOf<Reserva>()
         val textReserva : TextView = root.findViewById(R.id.sinReserva)
         val imagenReserva : ImageView = root.findViewById(R.id.imagenSinReserva)
@@ -77,7 +87,13 @@ class ReservationFragment : Fragment() {
                         mapaReserva["instagram"].toString(),
                         mapaReserva["id"].toString()
                     )
-                    reservasMutable.add(reserva)
+
+                    val date = sdf.parse(reserva.fecha)
+                    val fecha = sdf.format(date)
+
+                    if(date.after(day)){
+                        reservasMutable.add(reserva)
+                    }
                 }
                 val recycler = binding.recyclerViewReserva
                 recycler.adapter = ReservaAdapter(reservasMutable as ArrayList<Reserva>, imagenReserva, textReserva)

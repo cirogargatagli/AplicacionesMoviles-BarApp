@@ -10,7 +10,6 @@
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/drawable/ic_baseline_place_24.xml" value="0.203125" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/drawable/ic_baseline_share.xml" value="0.203125" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/drawable/ic_baseline_weekend.xml" value="0.203125" />
-        <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/drawable/ic_calendar_200.xml" value="0.2609375" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/drawable/ic_google.xml" value="0.221875" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/drawable/ic_groups_24.xml" value="0.203125" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2625" />
@@ -33,7 +32,6 @@
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_date_picker.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_reservation.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_slideshow.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/list_item.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/Ciro/Desktop/Modulo2/TPIntegrador/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/list_item_reserva.xml" value="0.25729166666666664" />
@@ -53,6 +51,7 @@
         <entry key="..\:/Users/Dami_/AndroidStudioProjects/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/activity_master.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/Dami_/AndroidStudioProjects/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/activity_register.xml" value="0.20625" />
         <entry key="..\:/Users/Dami_/AndroidStudioProjects/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Dami_/AndroidStudioProjects/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_reservation.xml" value="0.18342391304347827" />
         <entry key="..\:/Users/Dami_/AndroidStudioProjects/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/fragment_slideshow.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/Dami_/AndroidStudioProjects/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/list_item.xml" value="0.28542094455852157" />
         <entry key="..\:/Users/Dami_/AndroidStudioProjects/AplicacionesMoviles-BarApp/BarApp/app/src/main/res/layout/list_item_reserva.xml" value="0.20625" />
