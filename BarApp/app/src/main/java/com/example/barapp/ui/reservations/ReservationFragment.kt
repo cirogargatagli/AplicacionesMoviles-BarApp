@@ -58,8 +58,9 @@ class ReservationFragment : Fragment() {
 
     private fun showReservas(root : View) {
         val sdf = SimpleDateFormat("dd-MM-yyyy")
-        val day = Date()
-        val currentDay = sdf.format(day)
+        val dayAux = Date()
+        val currentDay = sdf.format(dayAux)
+        val day = sdf.parse(currentDay)
 
         var reservasMutable = mutableListOf<Reserva>()
         val textReserva : TextView = root.findViewById(R.id.sinReserva)
@@ -89,16 +90,17 @@ class ReservationFragment : Fragment() {
                     )
 
                     val date = sdf.parse(reserva.fecha)
-                    val fecha = sdf.format(date)
+                    val newDate = Date(date.time + 86400000)
 
-                    if(date.after(day)){
+                    if(newDate.after(day)){
                         reservasMutable.add(reserva)
                     }
                 }
                 val recycler = binding.recyclerViewReserva
                 recycler.adapter = ReservaAdapter(reservasMutable as ArrayList<Reserva>, imagenReserva, textReserva)
                 recycler.setHasFixedSize(true)
-            } else {
+            }
+            if(reservasMutable.size == 0) {
                 textReserva.visibility = View.VISIBLE
                 imagenReserva.visibility = View.VISIBLE
             }
