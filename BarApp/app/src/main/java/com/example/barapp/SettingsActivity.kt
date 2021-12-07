@@ -1,19 +1,12 @@
 package com.example.barapp
 
-import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreferenceCompat
-import com.google.firebase.database.core.utilities.Utilities
 import java.util.*
-import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
-import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.PreferenceManager
 
 
 class SettingsActivity : AppCompatActivity() {

@@ -1,6 +1,5 @@
 package com.example.barapp
 
-import android.Manifest
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
@@ -8,7 +7,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,7 +22,6 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.example.barapp.databinding.ActivityMasterBinding
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
@@ -35,10 +32,8 @@ import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import java.io.File
-import java.security.Permission
 
 class MasterActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMasterBinding
 
@@ -58,8 +53,6 @@ class MasterActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
 
         auth = FirebaseAuth.getInstance()
-
-
 
         navView.menu.findItem(R.id.nav_logout).setOnMenuItemClickListener{
             val builder = AlertDialog.Builder(this)

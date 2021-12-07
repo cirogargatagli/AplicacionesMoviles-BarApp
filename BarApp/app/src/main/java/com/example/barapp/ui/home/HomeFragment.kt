@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
@@ -15,11 +17,16 @@ import androidx.core.view.MenuItemCompat.getActionView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.barapp.MapsActivity
+import com.example.barapp.MasterActivity
 import com.example.barapp.adapter.ItemAdapter
 import com.example.barapp.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.example.barapp.R
+import com.example.barapp.SettingsActivity
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class HomeFragment : Fragment() {
 
@@ -81,6 +88,16 @@ class HomeFragment : Fragment() {
                     adapter = ItemAdapter(bares as ArrayList<Bar>, root.findViewById(R.id.imagenSinBusqueda), root.findViewById(R.id.textSinBusqueda))
                     recycler.adapter = adapter
                     recycler.setHasFixedSize(true)
+
+                    val preferences = activity?.getSharedPreferences("com.example.barapp_preferences",
+                        AppCompatActivity.MODE_PRIVATE
+                    )
+                    val darkMode = preferences!!.getBoolean("theme", false)
+                    if(darkMode){
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    }
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
